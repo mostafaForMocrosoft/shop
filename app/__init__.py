@@ -10,6 +10,7 @@ import redis
 # it is very important
 # session.clear()
 # session["user_id"] = user.id
+# Emoji : 🤑 💲
 
 r = redis.Redis("localhost", port=6379, decode_responses=True)
 
