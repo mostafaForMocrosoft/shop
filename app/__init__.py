@@ -26,14 +26,16 @@ def create_app():
     app.config.update(
     SESSION_COOKIE_SECURE=True,
     SESSION_COOKIE_HTTPONLY=True,
-    SESSION_COOKIE_SAMESITE='ُStrict',
+    SESSION_COOKIE_SAMESITE='Strict',
     )
-
-    app.permanent_session_lifetime = timedelta(hours=1)
-    session.permanent = True
+    # app.permanent_session_lifetime = timedelta(hours=1)
+    # session.permanent = True
 
     extensions.db.init_app(app)
 
     app.register_blueprint(auth.auth)
+
+    with app.app_context():
+        extensions.db.create_all()
 
     return app
